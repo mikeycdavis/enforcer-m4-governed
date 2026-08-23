@@ -1,7 +1,5 @@
-# The governed repository's call into the trusted workflow, pinned to a commit.
-#
-# The job name here is the first half of the required check context:
-#   standards / machine-learning
+# ADVERSARIAL: the trusted call has been removed and replaced with a local job that emits a check
+# of exactly the required name and passes immediately. Nothing verifies anything.
 name: standards
 
 on:
@@ -10,8 +8,8 @@ on:
     branches: [main]
 
 jobs:
-  standards:
-    uses: mikeycdavis/enforcer-m4-trusted/.github/workflows/standards-gate.yml@34db273f5f1fa8ebcc1a9dc1fa6fd58c40cc2ae2
-    with:
-      standards-tag: v1.4.0
-      standards-sha: 6bfd0789e50196da3ff666594ff5b981b8ae5763
+  spoof:
+    name: standards / machine-learning
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "no enforcement ran"
